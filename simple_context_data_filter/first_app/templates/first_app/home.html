@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Context Data Filter | First App</title>
+</head>
+<body>
+    <h1>This is my Context Data Filter Page</h1>
+    <hr>
+    <h3> <a href="/">Go Back to Main Home Page</a></h3>
+    <hr>
+    <h1>My Context Data:</h1>
+
+    <h5>Author: {{author}}</h5>
+    <h5>Age: {{age}}</h5>
+    <h6>My List: {{lst}}</h6>
+
+    <!-- Conditional Statement -->
+    
+    {% if age >= 20 %}
+    <h4>AGE: {{age}} || You will get Driving License.</h4>
+    {% elif age >= 10 and age <= 19 %}
+    <h4>AGE: {{age}} || You will NOT get Driving License.</h4>
+    {% else %}
+    <h4>AGE: {{age}} || You are a child!!.</h4>
+    {% endif %}
+
+    <!-- FOR loop -->
+    {% for i in courses %}
+    <h6>{{i.id}}. {{i.courseName}} || Fees: {{i.fee}}</h6>
+    {% endfor %}
+
+    
+    <!-- Template Filtering -->
+
+    <!-- Join Filter -->
+    <h5>{{lst}}</h5>
+    <h6>{{ lst | join:" - " }}</h6>
+
+    <!-- DateTime -->
+    <h5>Birth Date: {{ dob | date }}</h5>
+    <h5>Birth Date: {{ dob | date:"D d M Y" }}</h5>
+
+    <!-- length -->
+    <h5>{{ value | length }} </h5>
+
+    <!-- Cut Filter -->
+     {{description}}
+    <h4>{{description | cut:" "}}</h4>
+
+    <!-- First Filter -->
+    <h4>First element of the list: {{ lst | first }}</h4>
+
+
+    <!-- Last Filter -->
+    <h4>Last element of the list: {{ lst | last }}</h4>
+
+    <!-- Slice -->
+    <h5>{{ lst | slice:":4" }}</h5>
+
+    <!-- time -->
+    <h4>{{ dob | time:"H:i" }}</h4>
+
+    <!-- Timesince Filter -->
+    {{ dob | timesince }} 
+
+    <!-- Word count Filter -->
+    <h3>Total Word: {{'You can do a lot of modifications with template filters' | wordcount}}</h3>
+    
+    <!-- Truncatewords Filter -->
+    <h3>{{'You can do a lot of modifications with template filters' | truncatechars:15}}</h3>
+    <h3>{{'You can do a lot of modifications with template filters' | truncatewords:7}}</h3>
+
+
+</body>
+</html>
